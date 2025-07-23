@@ -1,69 +1,57 @@
 #include <stdio.h>
 
+//Torre (Nivel mestre)
 
-//Primeira peça: Torre - For
-int main() {
-    printf("Movimento da torre:\n");
-    
-    for (int torre = 0; torre <5 ; torre++)
-    {
-        printf("Direita\n");
+    void movertorre(int casas){
+        if (casas>0){  
+            printf("\nDireita");
+            movertorre(casas-1);}
     }
-    
-    //Segunda peça: Bispo - Do while
-    printf("\nMovimento do bispo:\n");
-    int bispo = 0;
 
-    do
-    {
-        printf("Direita, Cima\n");
-        bispo++;   
-    } while (bispo < 5);
-    
-    //Movimento da rainha
-    printf("\nMovimento da rainha:\n");
 
-    int rainha =0;
-    while (rainha < 8)
-    {
-        printf("Esquerda\n");
-        rainha++;
-    }
-    //Segunda parte do desafio - Aventureiro
-
-    printf("\nMovimento do cavalo - 1 (for)\n");
-
-    //Utilizando o loop for, sinalizei para saber qual etapa do loop a palavra baixo foi impressa.
-    
-    for (int cavalo1 = 0; cavalo1 <1 ; cavalo1++)
-    {
-        for (int cavalo2 = 0; cavalo2 <1 ; cavalo2++)
-            printf("Baixo-\n");
-    {
-        printf("Baixo*\n"); //sinalizei para ver o loop *
-    }
-    
-        printf("Esquerda\n");
-    }
-    
-    printf("\nMovimento do cavalo 2 - (while)");
-    
-        int cavalo1 =0, cavalo2 =0;
-
-    //Loop while tambem sinalizado para observar a palavra 'baixo' impressa.
-    
-    while (cavalo1 < 1){
-        while(cavalo2 < 1){
-            
-            printf("\nBaixo-");
-            cavalo2 ++;
+    //Aqui o bispo vai seguir a quantidade de movimentos inseridas la em baixo na função moverbispo()   
+    void moverbispo(int casas){ 
+        for (int i=0; i < casas ; i++){ //nesse for ele vai passar 5x conforme colocado abaixo
+            for(int j=1 ; j < 2 ; j++) { // nesse for ele vai dar sempre 1 para voltar o ciclo das 5x acima
+                printf("\nDireita");} // cada vez que imprime 
+            printf("\nCima\n");
+            }
         }
-        
-        printf("\nBaixo*");
-        cavalo1++;
+
+    //Movimento da rainha, seguindo a logica da torre
+
+    void moverrainha(int casa_rainha){
+        if (casa_rainha > 0){
+        printf("\nEsquerda");
+        moverrainha(casa_rainha-1);}
     }
-    printf("\nEsquerda");
+    // Cavalo: logica parecida com a do bispo:
+
+    void movercavalo (int casa_cavalo){
+        for (int i=0; i<casa_cavalo ; i++){
+            for (int j =1; j<3 ; j++) {
+                printf("\nCima");}
+            printf("\nDireita");}
+    }
+
+// As funções separadinhas:
+
+int main() {
+    printf("\nMovimento da torre.\n");
+    movertorre(5); // chama função da torre
+    printf("\n");
+    
+    printf("\nMovimento do Bispo.\n");  
+    moverbispo(5); // chama função do bispo
+
+    printf("\nMovimento da rainha.\n");
+    moverrainha(8);
+    printf("\n");
+
+    printf("\nMovimento do Cavalo.\n");
+    movercavalo(1);
     return 0;
+
 }
 
 
